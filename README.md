@@ -3,11 +3,14 @@ This repo contains Raspberry Pi 4 projects written in C# using .NET Core.
 
 | Folder | Content |
 |--------|---------|
-| led-flasher | Simple program that flashes an LED connected between GND (pin 9) and GPIO 17 (pin 11) |
+| led-flasher  | Simple program that flashes an LED. |
+| input-poller | Simple program that detects if a button is pressed. |
+
+![Photo](photo.jpg)
 
 ## GPIO Ports
 
-GPIO connector pinout in a Raspberry Pi 4
+GPIO connector pinout on a Raspberry Pi 4
 
 ![Pinout](Pi4_GPIO.png)
 
