@@ -4,6 +4,10 @@ using System.Device.Gpio;
 
 namespace LedFlasher
 {
+    //
+    // This program assumes that an LED is connected between GPIO 17 (pin 11) and GND (pin 9)
+    // with a 390 Ohms resistor in series.
+    //
     class Program
     {
         static void Main(string[] args)
@@ -17,7 +21,7 @@ namespace LedFlasher
             using (GpioController controller = new GpioController())
             {
                 controller.OpenPin(pin, PinMode.Output);
-                Console.WriteLine($"GPIO pin enabled for use: {pin}");
+                Console.WriteLine($"GPIO pin set to output: {pin}");
 
                 Console.CancelKeyPress += (object sender, ConsoleCancelEventArgs eventArgs) =>
                 {
