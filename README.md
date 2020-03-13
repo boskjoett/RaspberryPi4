@@ -4,7 +4,7 @@ This repo contains Raspberry Pi 4 projects written in C# using .NET Core.
 | Folder | Content |
 |--------|---------|
 | led-flasher  | Simple program that flashes an LED. |
-| input-poller | Simple program that detects if a button is pressed. |
+| button-poller | Simple program that turns on an LED while a button is pressed. |
 
 ![Photo](photo.jpg)
 
