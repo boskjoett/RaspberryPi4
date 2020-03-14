@@ -1,4 +1,4 @@
-# RaspberryPi4
+# Raspberry Pi 4 Stuff
 This repo contains Raspberry Pi 4 projects written in C# using .NET Core.
 
 | Folder | Content |
@@ -18,3 +18,10 @@ GPIO connector pinout on a Raspberry Pi 4
 * https://darenmay.com/blog/net-core-and-gpio-on-the-raspberry-pi---leds-and-gpio/
 * https://www.raspberrypi.org/documentation/usage/gpio/
 * https://www.hanselman.com/blog/InstallingTheNETCore2xSDKOnARaspberryPiAndBlinkingAnLEDWithSystemDeviceGpio.aspx
+
+## Webcams
+
+Links regarding how to use standard USB webcams with a Raspberry Pi:
+
+* https://www.raspberrypi.org/documentation/usage/webcams/
+* https://motion-project.github.io/
