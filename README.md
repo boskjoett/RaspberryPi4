@@ -33,3 +33,32 @@ Links regarding how to use standard USB webcams with a Raspberry Pi:
 
 * https://www.raspberrypi.org/documentation/usage/webcams/
 * https://motion-project.github.io/
+
+## Audio
+
+Audio can be played either on HDMI or the 3.5 mm jack plug (default).
+
+To enable audio on Ubuntu:
+
+Insert this line in /boot/firmware/usercfg.txt:<br />
+dtparam=audio=on
+
+To list available sound devices:
+
+    sudo aplay -L
+
+Audio can be tested by the **speaker-test** command.
+
+    sudo speaker-test -twav
+
+.wav files can be played with **aplay**
+
+omxplayer-pi is not available on Ubuntu ARM64
+
+MP3 files can be played with mpg321
+
+To install mpg321
+
+    sudo apt install mpg321
+
+
