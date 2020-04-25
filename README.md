@@ -7,6 +7,8 @@ This repo contains Raspberry Pi 4 projects written in C# using .NET Core.
 | button-poller     | Simple program that turns on an LED while a button is pressed. |
 | bluetooth-scanner | Simple program that scans for Bluetooth devices. Uses the BlueZ Bluetooth stack. |
 
+These projects can run both on Raspian and Ubuntu for Raspberry Pi.
+
 ![Photo](photo.jpg)
 
 ## GPIO Ports
@@ -19,6 +21,9 @@ See also
 * https://www.raspberrypi.org/documentation/usage/gpio/
 * https://darenmay.com/blog/net-core-and-gpio-on-the-raspberry-pi---leds-and-gpio/
 * https://www.hanselman.com/blog/InstallingTheNETCore2xSDKOnARaspberryPiAndBlinkingAnLEDWithSystemDeviceGpio.aspx
+
+**IMPORTANT**<br/>
+You must be root to control GPIO pins.
 
 ## Bluetooth
 * http://www.bluez.org/ - BlueZ - The official Linux Bluetooth protocol stack.
