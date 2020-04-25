@@ -15,17 +15,16 @@ GPIO connector pinout on a Raspberry Pi 4
 
 ![Pinout](Pi4_GPIO.png)
 
+See also 
+* https://www.raspberrypi.org/documentation/usage/gpio/
+* https://darenmay.com/blog/net-core-and-gpio-on-the-raspberry-pi---leds-and-gpio/
+* https://www.hanselman.com/blog/InstallingTheNETCore2xSDKOnARaspberryPiAndBlinkingAnLEDWithSystemDeviceGpio.aspx
+
 ## Bluetooth
 * http://www.bluez.org/ - BlueZ - The official Linux Bluetooth protocol stack.
 * https://www.nuget.org/packages/HashtagChris.DotNetBlueZ - .NET Core NuGet package using BlueZ.
 
-
     sudo apt install bluez
-
-## Links
-* https://darenmay.com/blog/net-core-and-gpio-on-the-raspberry-pi---leds-and-gpio/
-* https://www.raspberrypi.org/documentation/usage/gpio/
-* https://www.hanselman.com/blog/InstallingTheNETCore2xSDKOnARaspberryPiAndBlinkingAnLEDWithSystemDeviceGpio.aspx
 
 ## Webcams
 
@@ -61,4 +60,6 @@ To install mpg321
 
     sudo apt install mpg321
 
+## Google Assistant
 
+See https://pimylifeup.com/raspberry-pi-google-assistant/
