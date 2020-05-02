@@ -57,11 +57,11 @@ or
 
 To list available sound recording (microphone) devices:
 
-    sudo aplay -L
+    sudo arecord -L
 
 or 
 
-    sudo aplay -l
+    sudo arecord -l
 
 Audio can be tested by the **speaker-test** command.
 
