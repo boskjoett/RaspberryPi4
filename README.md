@@ -75,7 +75,7 @@ To test audio on a Jabra SPEAK 410 USB speakerphone:
 
 To make a 5 second recording to a file:
 
-    arecord --format=S16_LE --duration=5 --rate=16000 --file-type=raw out.raw
+    sudo arecord -f cd --duration=5 -Dplughw:USB --file-type=raw out.raw
 
 Playback and recording levels can be configured (in console mode) by running this command
 
