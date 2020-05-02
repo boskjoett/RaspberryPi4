@@ -47,19 +47,36 @@ To enable audio on Ubuntu:
 Insert this line in /boot/firmware/usercfg.txt:<br />
 dtparam=audio=on
 
-To list available sound devices:
+To list available sound playback (speaker) devices:
+
+    sudo aplay -L
+or 
+
+    sudo aplay -l
+
+To list available sound recording (microphone) devices:
 
     sudo aplay -L
 
+or 
+
+    sudo aplay -l
+
 Audio can be tested by the **speaker-test** command.
 
-    sudo speaker-test -twav
+    sudo speaker-test -t wav
 
 .wav files can be played with **aplay**
 
+To test audio on a Jabra SPEAK 410 USB speakerphone:
+
+    sudo speaker-test -Dplughw:USB -t wav
+
+### MP3
+
 omxplayer-pi is not available on Ubuntu ARM64
 
-MP3 files can be played with mpg321
+MP3 files can be played with **mpg321**
 
 To install mpg321
 
