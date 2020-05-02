@@ -73,6 +73,10 @@ To test audio on a Jabra SPEAK 410 USB speakerphone:
 
     sudo speaker-test -Dplughw:USB -t wav
 
+To make a 5 second recording to a file:
+
+    arecord --format=S16_LE --duration=5 --rate=16000 --file-type=raw out.raw
+
 ### MP3
 
 omxplayer-pi is not available on Ubuntu ARM64
