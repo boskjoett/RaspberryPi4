@@ -4,8 +4,9 @@ This repo contains Raspberry Pi 4 projects written in C# using .NET Core.
 | Folder | Content |
 |--------|---------|
 | led-flasher       | Simple program that flashes an LED. |
-| button-poller     | Simple program that turns on an LED while a button is pressed. |
+| button-poller     | Simple program that turns on an LED and a buzzer while a button is pressed. |
 | bluetooth-scanner | Simple program that scans for Bluetooth devices. Uses the BlueZ Bluetooth stack. |
+| google-assistant  | Google Assistant demo |
 
 These projects can run both on Raspian and Ubuntu for Raspberry Pi.
 
