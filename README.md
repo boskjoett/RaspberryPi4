@@ -1,5 +1,8 @@
-# Raspberry Pi 4 Stuff
-This repo contains Raspberry Pi 4 projects written in C# using .NET Core.
+# Raspberry Pi 4 Model B Stuff
+This repo contains Raspberry Pi 4 Model B projects written in C# using .NET Core.
+
+![Photo](RaspberryPi4.jpg)
+
 
 | Folder | Content |
 |--------|---------|
@@ -94,3 +97,27 @@ To install mpg321
 ## Google Assistant
 
 See https://pimylifeup.com/raspberry-pi-google-assistant/
+
+--------------
+
+## Relay Board HAT
+
+RPI Relay Board
+
+![Relay Board](relay-board-components.jpg)
+
+1. Raspberry Pi GPIO interface: for connecting Raspberry Pi
+2. Relay screw terminal: for connecting target devices
+3. Relays
+4. Photocoupler: PC817
+5. Relay indicator
+   * LED on: relay NC is opened, NO is closed
+   * LED off: relay NC is closed, NO is opened
+6. Power indicator
+7. Relay control jumper
+   * short the jumper: control the relays by default I/Os used in the example code
+   * open the jumper: control the relays by custom I/Os through jumper wires
+
+### Documentation and Sample Code
+
+https://www.waveshare.com/wiki/RPi_Relay_Board
