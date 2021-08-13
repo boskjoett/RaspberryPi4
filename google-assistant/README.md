@@ -2,7 +2,9 @@
 
 Using Google Assistant on a Raspberry Pi 4.
 
-See: https://pimylifeup.com/raspberry-pi-google-assistant/
+Links: 
+* https://pimylifeup.com/raspberry-pi-google-assistant/
+* https://developers.google.com/assistant/sdk/guides/service/python
 
 ## Device Registration
 Product name: Pi4 Google Assistant
