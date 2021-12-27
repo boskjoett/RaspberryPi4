@@ -1,7 +1,7 @@
 # Raspberry Pi 4 Model B Stuff
-This repo contains Raspberry Pi 4 Model B projects written in C# using .NET Core.
+This repo contains Raspberry Pi 4 Model B projects written in C# using .NET 6.0.
 
-![Photo](RaspberryPi4.jpg)
+![Photo](images/RaspberryPi4.jpg)
 
 
 | Folder | Content |
@@ -13,13 +13,13 @@ This repo contains Raspberry Pi 4 Model B projects written in C# using .NET Core
 
 These projects can run both on Raspian and Ubuntu for Raspberry Pi.
 
-![Photo](photo.jpg)
+![Photo](images/photo.jpg)
 
 ## GPIO Ports
 
 GPIO connector pinout on a Raspberry Pi 4
 
-![Pinout](Pi4_GPIO.png)
+![Pinout](images/Pi4_GPIO.png)
 
 See also 
 * https://www.raspberrypi.org/documentation/usage/gpio/
@@ -27,7 +27,11 @@ See also
 * https://www.hanselman.com/blog/InstallingTheNETCore2xSDKOnARaspberryPiAndBlinkingAnLEDWithSystemDeviceGpio.aspx
 
 **IMPORTANT**<br/>
-You must be root to control GPIO pins.
+**You must be root to control GPIO pins.**
+
+## IO connections for *led-flasher* and *button-poller* projects
+
+![Photo](images/pi-with-io.jpg)
 
 ## Bluetooth
 * http://www.bluez.org/ - BlueZ - The official Linux Bluetooth protocol stack.
@@ -104,7 +108,7 @@ See https://pimylifeup.com/raspberry-pi-google-assistant/
 
 RPI Relay Board
 
-![Relay Board](relay-board-components.jpg)
+![Relay Board](images/relay-board-components.jpg)
 
 1. Raspberry Pi GPIO interface: for connecting Raspberry Pi
 2. Relay screw terminal: for connecting target devices
