@@ -13,9 +13,15 @@ namespace PiWebApp
         private const int Relay1Pin = 26;
         private const int Relay2Pin = 20;
         private const int Relay3Pin = 21;
+        private const int ButtonPin = 22;
+        private const int LedPin = 17;
         #endregion
 
         private readonly GpioController _controller;
+        private CancellationTokenSource _cancellationTokenSource;
+
+        public event EventHandler<EventArgs>? ButtonPressed;
+        public event EventHandler<EventArgs>? ButtonReleased;
 
         public IoController()
         {
@@ -24,15 +30,17 @@ namespace PiWebApp
             _controller.OpenPin(Relay2Pin, PinMode.Output);
             _controller.OpenPin(Relay3Pin, PinMode.Output);
 
+            _controller.OpenPin(LedPin, PinMode.Output);
+            _controller.OpenPin(ButtonPin, PinMode.InputPullDown);
+
             // Turn all relays off
             _controller.Write(Relay1Pin, PinValue.High);
             _controller.Write(Relay2Pin, PinValue.High);
             _controller.Write(Relay3Pin, PinValue.High);
-        }
 
-        public void Dispose()
-        {
-            _controller.Dispose();
+            _cancellationTokenSource = new CancellationTokenSource();
+
+            SubscribeToButtonEvents(ButtonPin);
         }
 
         public void SetRelayState(Relay relay, bool on)
@@ -55,6 +63,46 @@ namespace PiWebApp
             }
 
             _controller.Write(pinNumber, on ? PinValue.Low : PinValue.High);
+        }
+
+        public void SetLedState(bool on)
+        {
+            _controller.Write(LedPin, on ? PinValue.High : PinValue.Low);
+        }
+
+        public void SubscribeToButtonEvents(int pinNumber)
+        {
+            CancellationToken cancellationToken = _cancellationTokenSource.Token;
+
+            Task.Factory.StartNew(() =>
+            {
+                while (!cancellationToken.IsCancellationRequested)
+                {
+                    WaitForEventResult result = _controller.WaitForEvent(pinNumber, PinEventTypes.Rising | PinEventTypes.Falling, _cancellationTokenSource.Token);
+                    try
+                    {
+                        if (result.EventTypes == PinEventTypes.Falling)
+                        {
+                            ButtonPressed?.Invoke(this, EventArgs.Empty);
+                        }
+                        else if (result.EventTypes == PinEventTypes.Rising)
+                        {
+                            ButtonReleased?.Invoke(this, EventArgs.Empty);
+                        }
+                    }
+                    catch
+                    {
+                    }
+                }
+            }, TaskCreationOptions.LongRunning);
+        }
+
+        public void Dispose()
+        {
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+
+            _controller.Dispose();
         }
     }
 }
