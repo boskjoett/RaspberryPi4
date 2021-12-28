@@ -23,6 +23,11 @@ namespace PiWebApp
             _controller.OpenPin(Relay1Pin, PinMode.Output);
             _controller.OpenPin(Relay2Pin, PinMode.Output);
             _controller.OpenPin(Relay3Pin, PinMode.Output);
+
+            // Turn all relays off
+            _controller.Write(Relay1Pin, PinValue.Low);
+            _controller.Write(Relay2Pin, PinValue.Low);
+            _controller.Write(Relay3Pin, PinValue.Low);
         }
 
         public void Dispose()
