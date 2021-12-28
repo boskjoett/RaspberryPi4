@@ -16,10 +16,18 @@
                 <h4 class="my-0 fw-normal">Relay 1</h4>
             </div>
             <div class="card-body">
-                <button type="button" class="w-100 btn btn-lg btn-primary">ON</button>
+                <form method="post">
+                    <button type="button" class="w-100 btn btn-lg btn-primary">ON</button>
+                    <input type="hidden" name="on" value="true" />
+                    <input type="hidden" name="relay" value="0" />
+                </form>
                 <br />
                 <br />
-                <button type="button" class="w-100 btn btn-lg btn-secondary">OFF</button>
+                <form method="post">
+                    <button type="button" class="w-100 btn btn-lg btn-primary">OFF</button>
+                    <input type="hidden" name="on" value="false" />
+                    <input type="hidden" name="relay" value="0" />
+                </form>
             </div>
         </div>
     </div>
@@ -29,10 +37,18 @@
                 <h4 class="my-0 fw-normal">Relay 2</h4>
             </div>
             <div class="card-body">
-                <button type="button" class="w-100 btn btn-lg btn-primary">ON</button>
+                <form method="post">
+                    <button type="button" class="w-100 btn btn-lg btn-primary">ON</button>
+                    <input type="hidden" name="on" value="true" />
+                    <input type="hidden" name="relay" value="1" />
+                </form>
                 <br />
                 <br />
-                <button type="button" class="w-100 btn btn-lg btn-secondary">OFF</button>
+                <form method="post">
+                    <button type="button" class="w-100 btn btn-lg btn-primary">OFF</button>
+                    <input type="hidden" name="on" value="false" />
+                    <input type="hidden" name="relay" value="1" />
+                </form>
             </div>
         </div>
     </div>
@@ -42,10 +58,18 @@
                 <h4 class="my-0 fw-normal">Relay 3</h4>
             </div>
             <div class="card-body">
-                <button type="button" class="w-100 btn btn-lg btn-primary">ON</button>
+                <form method="post">
+                    <button type="button" class="w-100 btn btn-lg btn-primary">ON</button>
+                    <input type="hidden" name="on" value="true" />
+                    <input type="hidden" name="relay" value="2" />
+                </form>
                 <br />
                 <br />
-                <button type="button" class="w-100 btn btn-lg btn-secondary">OFF</button>
+                <form method="post">
+                    <button type="button" class="w-100 btn btn-lg btn-primary">OFF</button>
+                    <input type="hidden" name="on" value="false" />
+                    <input type="hidden" name="relay" value="2" />
+                </form>
             </div>
         </div>
     </div>
