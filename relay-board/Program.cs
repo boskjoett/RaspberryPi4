@@ -12,9 +12,9 @@ namespace RelayBoard
     {
         static void Main(string[] args)
         {
-            const int Relay1Pin = 25;
-            const int Relay2Pin = 28;
-            const int Relay3Pin = 29;
+            const int Relay1Pin = 26;
+            const int Relay2Pin = 20;
+            const int Relay3Pin = 21;
             
             Console.WriteLine($"Toggling relay states");
 
