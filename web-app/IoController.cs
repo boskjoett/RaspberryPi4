@@ -25,9 +25,9 @@ namespace PiWebApp
             _controller.OpenPin(Relay3Pin, PinMode.Output);
 
             // Turn all relays off
-            _controller.Write(Relay1Pin, PinValue.Low);
-            _controller.Write(Relay2Pin, PinValue.Low);
-            _controller.Write(Relay3Pin, PinValue.Low);
+            _controller.Write(Relay1Pin, PinValue.High);
+            _controller.Write(Relay2Pin, PinValue.High);
+            _controller.Write(Relay3Pin, PinValue.High);
         }
 
         public void Dispose()
@@ -54,7 +54,7 @@ namespace PiWebApp
                     return;
             }
 
-            _controller.Write(pinNumber, on ? PinValue.High : PinValue.Low);
+            _controller.Write(pinNumber, on ? PinValue.Low : PinValue.High);
         }
     }
 }
