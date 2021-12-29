@@ -40,6 +40,9 @@ namespace PiWebApp
             _controller.Write(Relay2Pin, PinValue.High);
             _controller.Write(Relay3Pin, PinValue.High);
 
+            // Turn LED off
+            _controller.Write(Relay3Pin, PinValue.Low);
+
             _cancellationTokenSource = new CancellationTokenSource();
 
             SubscribeToButtonEvents(ButtonPin);

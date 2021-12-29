@@ -96,7 +96,7 @@
             <div class="card-header py-3">
                 <h4 class="my-0 fw-normal">Button</h4>
             </div>
-            <div class="card-body">
+            <div class="card-body" id="buttonState">
                 @if (Model.ButtonPressed)
                 {
                     <p>Button is pressed</p>
@@ -109,3 +109,6 @@
         </div>
     </div>
 </div>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/buttonstate.js"></script>
