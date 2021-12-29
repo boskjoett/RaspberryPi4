@@ -7,7 +7,11 @@ connection.on("SendButtonState", function (pressed) {
     console.log("SendButtonState called - pressed: " + pressed);
 
     var divElement = document.getElementById("buttonState");
-    divElement.innerHTML = "<p>Button state changed</p>";
+    if (pressed) {
+        divElement.innerHTML = "<p><b>Button is pressed</b></p>";
+    } else {
+        divElement.innerHTML = "<p>Button is not pressed</p>";
+    }
 });
 
 connection.start().then(function () {
