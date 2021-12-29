@@ -7,6 +7,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddSignalR();
 
 // Initialize dependency injection
+builder.Services.AddSingleton<ISignalRHub, SignalRHub>();
 builder.Services.AddSingleton<IIoController, IoController>();
 
 var app = builder.Build();
