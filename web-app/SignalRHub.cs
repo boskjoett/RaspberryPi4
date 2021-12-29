@@ -2,7 +2,7 @@
 
 namespace PiWebApp
 {
-    public class SignalRHub : Hub, ISignalRHub
+    public class SignalRHub : Hub
     {
         private readonly ILogger<SignalRHub> _logger;
 
