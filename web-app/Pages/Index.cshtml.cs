@@ -14,11 +14,15 @@ namespace PiWebApp.Pages
         {
             _ioController = ioController;
             _logger = logger;
+
+            _ioController.ButtonPressed += OnButtonPressed;
+            _ioController.ButtonReleased += OnButtonReleased;
         }
 
         public void OnGet()
         {
             ButtonPressed = _ioController.ReadButtonState();
+            _logger.LogInformation($"Button is {(ButtonPressed ? "pressed" : "released")}");
         }
 
         public void OnPostRelay(int relay, bool on)
@@ -31,6 +35,17 @@ namespace PiWebApp.Pages
         {
             _logger.LogInformation($"Setting LED {(on ? "on" : "off")}");
             _ioController.SetLedState(on);
+        }
+
+
+        private void OnButtonPressed(object? sender, EventArgs e)
+        {
+            _logger.LogInformation("Button is pressed");
+        }
+
+        private void OnButtonReleased(object? sender, EventArgs e)
+        {
+            _logger.LogInformation("Button is released");
         }
     }
 }

@@ -3,15 +3,15 @@
 ASP.NET 6.0 web app for controlling I/O pins on a [Raspberry Pi 4 model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
 with a [RPi Relay Board](https://www.waveshare.com/wiki/RPi_Relay_Board) mounted.
 
-### I/O pins
+### I/O pin usage
 
-The relay board uses these I/O pins as output
-
-| Pin   | Relay |
-|------ |-------|
-| 26    |  1    |
-| 20    |  2    |
-| 21    |  3    |
+| Pin   | Mode           | Use     |
+|------ |----------------|---------|
+| 26    | Output         | Relay 1 |
+| 20    | Output         | Relay 2 |
+| 21    | Output         | Relay 3 |
+| 17    | Output         | LED     |
+| 22    | Input pulldown | Button  |
 
 ### Running the code
 
@@ -23,3 +23,4 @@ The relay board uses these I/O pins as output
 
 Remember to open port 80 in the firewall on Raspberry Pi with this command<br />
 ``sudo ufw allow 80/tcp``
+

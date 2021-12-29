@@ -18,7 +18,7 @@ namespace PiWebApp
         #endregion
 
         private readonly GpioController _controller;
-        private CancellationTokenSource _cancellationTokenSource;
+        private readonly CancellationTokenSource _cancellationTokenSource;
 
         public event EventHandler<EventArgs>? ButtonPressed;
         public event EventHandler<EventArgs>? ButtonReleased;
