@@ -70,6 +70,14 @@ namespace PiWebApp
             _controller.Write(LedPin, on ? PinValue.High : PinValue.Low);
         }
 
+        public bool ReadButtonState()
+        {
+            PinValue value = _controller.Read(ButtonPin);
+
+            // The button is pressed when the input pin is low
+            return value == PinValue.Low ? true : false;
+        }
+
         public void SubscribeToButtonEvents(int pinNumber)
         {
             CancellationToken cancellationToken = _cancellationTokenSource.Token;

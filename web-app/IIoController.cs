@@ -10,5 +10,7 @@ namespace PiWebApp
         void SetRelayState(Relay relay, bool on);
 
         void SetLedState(bool on);
+
+        bool ReadButtonState();
     }
 }
