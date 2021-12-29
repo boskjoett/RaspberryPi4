@@ -22,7 +22,7 @@ namespace PiWebApp.Pages
         public void OnGet()
         {
             ButtonPressed = _ioController.ReadButtonState();
-            _logger.LogInformation($"Button is {(ButtonPressed ? "pressed" : "released")}");
+            _logger.LogInformation($"Current button state is {(ButtonPressed ? "pressed" : "released")}");
         }
 
         public void OnPostRelay(int relay, bool on)

@@ -5,13 +5,13 @@ with a [RPi Relay Board](https://www.waveshare.com/wiki/RPi_Relay_Board) mounted
 
 ### I/O pin usage
 
-| Pin   | Mode           | Use     |
-|------ |----------------|---------|
-| 26    | Output         | Relay 1 |
-| 20    | Output         | Relay 2 |
-| 21    | Output         | Relay 3 |
-| 17    | Output         | LED     |
-| 22    | Input pulldown | Button  |
+| GPIO | Mode           | Use     |
+|----- |----------------|---------|
+| 26   | Output         | Relay 1 |
+| 20   | Output         | Relay 2 |
+| 21   | Output         | Relay 3 |
+| 17   | Output         | LED anode. Katode is connected to GND on pin 9 |
+| 22   | Input pulldown | Button. Other button terminal is connected to 3.3 V power on pin 17 |
 
 ### Running the code
 

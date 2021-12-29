@@ -74,8 +74,8 @@ namespace PiWebApp
         {
             PinValue value = _controller.Read(ButtonPin);
 
-            // The button is pressed when the input pin is low
-            return value == PinValue.Low ? true : false;
+            // The button is pressed when the input pin is high
+            return value == PinValue.High;
         }
 
         public void SubscribeToButtonEvents(int pinNumber)
@@ -91,11 +91,11 @@ namespace PiWebApp
                     {
                         if (result.EventTypes == PinEventTypes.Falling)
                         {
-                            ButtonPressed?.Invoke(this, EventArgs.Empty);
+                            ButtonReleased?.Invoke(this, EventArgs.Empty);
                         }
                         else if (result.EventTypes == PinEventTypes.Rising)
                         {
-                            ButtonReleased?.Invoke(this, EventArgs.Empty);
+                            ButtonPressed?.Invoke(this, EventArgs.Empty);
                         }
                     }
                     catch
