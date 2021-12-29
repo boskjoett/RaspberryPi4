@@ -13,8 +13,15 @@ namespace PiWebApp
 
         public async Task SendButtonStateAsync(bool pressed)
         {
-            _logger.LogInformation($"Sending button state {pressed} over SignalR");
-            await Clients.All.SendAsync("ButtonStateChanged", pressed);
+            try
+            {
+                _logger.LogInformation($"Sending button state {pressed} over SignalR");
+                await Clients.All.SendAsync("ButtonStateChanged", pressed);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception sending button state: {ex.Message}");
+            }
         }
     }
 }
