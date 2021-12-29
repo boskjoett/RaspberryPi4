@@ -89,6 +89,8 @@ namespace PiWebApp
 
             Task.Factory.StartNew(() =>
             {
+                bool lastButtonState = false;
+
                 while (!cancellationToken.IsCancellationRequested)
                 {
                     WaitForEventResult result = _controller.WaitForEvent(pinNumber, PinEventTypes.Rising | PinEventTypes.Falling, _cancellationTokenSource.Token);
@@ -98,13 +100,20 @@ namespace PiWebApp
 
                     try
                     {
-                        if (IsButtonPressed)
+                        bool newButtonState = IsButtonPressed;
+
+                        if (newButtonState != lastButtonState)
                         {
-                            ButtonPressed?.Invoke(this, EventArgs.Empty);
-                        }
-                        else
-                        {
-                            ButtonReleased?.Invoke(this, EventArgs.Empty);
+                            if (newButtonState)
+                            {
+                                ButtonPressed?.Invoke(this, EventArgs.Empty);
+                            }
+                            else
+                            {
+                                ButtonReleased?.Invoke(this, EventArgs.Empty);
+                            }
+
+                            lastButtonState = newButtonState;
                         }
                     }
                     catch
