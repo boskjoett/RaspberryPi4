@@ -21,7 +21,7 @@ namespace PiWebApp.Pages
 
         public void OnGet()
         {
-            ButtonPressed = _ioController.ReadButtonState();
+            ButtonPressed = _ioController.IsButtonPressed;
             _logger.LogInformation($"Current button state is {(ButtonPressed ? "pressed" : "released")}");
         }
 

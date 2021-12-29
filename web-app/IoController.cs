@@ -4,7 +4,7 @@ using System.Device.Gpio;
 namespace PiWebApp
 {
     /// <summary>
-    /// Controls the I/O pins on a Raspberry Pi mounted with an RPi Relay Board.
+    /// Controls the I/O pins on a Raspberry Pi mounted with an RPi Relay Board, an LED and a pushbutton.
     /// </summary>
     /// <see href="https://www.waveshare.com/rpi-relay-board.htm"/>
     public class IoController : IIoController
@@ -22,6 +22,8 @@ namespace PiWebApp
 
         public event EventHandler<EventArgs>? ButtonPressed;
         public event EventHandler<EventArgs>? ButtonReleased;
+
+        public bool IsButtonPressed { get { return _controller.Read(ButtonPin) == PinValue.High; } }
 
         public IoController()
         {
@@ -70,15 +72,15 @@ namespace PiWebApp
             _controller.Write(LedPin, on ? PinValue.High : PinValue.Low);
         }
 
-        public bool ReadButtonState()
+        public void Dispose()
         {
-            PinValue value = _controller.Read(ButtonPin);
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
 
-            // The button is pressed when the input pin is high
-            return value == PinValue.High;
+            _controller.Dispose();
         }
 
-        public void SubscribeToButtonEvents(int pinNumber)
+        private void SubscribeToButtonEvents(int pinNumber)
         {
             CancellationToken cancellationToken = _cancellationTokenSource.Token;
 
@@ -87,15 +89,19 @@ namespace PiWebApp
                 while (!cancellationToken.IsCancellationRequested)
                 {
                     WaitForEventResult result = _controller.WaitForEvent(pinNumber, PinEventTypes.Rising | PinEventTypes.Falling, _cancellationTokenSource.Token);
+
+                    // Wait a short while and read stable button state
+                    cancellationToken.WaitHandle.WaitOne(300);
+
                     try
                     {
-                        if (result.EventTypes == PinEventTypes.Falling)
-                        {
-                            ButtonReleased?.Invoke(this, EventArgs.Empty);
-                        }
-                        else if (result.EventTypes == PinEventTypes.Rising)
+                        if (IsButtonPressed)
                         {
                             ButtonPressed?.Invoke(this, EventArgs.Empty);
+                        }
+                        else
+                        {
+                            ButtonReleased?.Invoke(this, EventArgs.Empty);
                         }
                     }
                     catch
@@ -103,14 +109,6 @@ namespace PiWebApp
                     }
                 }
             }, TaskCreationOptions.LongRunning);
-        }
-
-        public void Dispose()
-        {
-            _cancellationTokenSource.Cancel();
-            _cancellationTokenSource.Dispose();
-
-            _controller.Dispose();
         }
     }
 }

@@ -7,10 +7,10 @@ namespace PiWebApp
         event EventHandler<EventArgs>? ButtonPressed;
         event EventHandler<EventArgs>? ButtonReleased;
 
+        bool IsButtonPressed { get; }
+
         void SetRelayState(Relay relay, bool on);
 
         void SetLedState(bool on);
-
-        bool ReadButtonState();
     }
 }

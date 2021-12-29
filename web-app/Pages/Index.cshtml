@@ -97,7 +97,14 @@
                 <h4 class="my-0 fw-normal">Button</h4>
             </div>
             <div class="card-body">
-                <p>Button is @Model.ButtonPressed</p>
+                @if (Model.ButtonPressed)
+                {
+                    <p>Button is pressed</p>
+                }
+                else
+                {
+                    <p>Button is not pressed</p>
+                }
             </div>
         </div>
     </div>
