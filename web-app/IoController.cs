@@ -44,7 +44,7 @@ namespace PiWebApp
             _controller.Write(Relay3Pin, PinValue.High);
 
             // Turn LED off
-            _controller.Write(Relay3Pin, PinValue.Low);
+            _controller.Write(LedPin, PinValue.Low);
 
             _cancellationTokenSource = new CancellationTokenSource();
 
@@ -116,7 +116,7 @@ namespace PiWebApp
                                 ButtonReleased?.Invoke(this, EventArgs.Empty);
                             }
 
-                            _signalRHub.SendButtonStateAsync(newButtonState);
+                            _signalRHub.SendButtonStateAsync(newButtonState).Wait();
 
                             lastButtonState = newButtonState;
                         }
