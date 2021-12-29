@@ -18,6 +18,7 @@ namespace PiWebApp
         #endregion
 
         private readonly GpioController _controller;
+        private readonly ISignalRHub _signalRHub;
         private readonly CancellationTokenSource _cancellationTokenSource;
 
         public event EventHandler<EventArgs>? ButtonPressed;
@@ -25,8 +26,10 @@ namespace PiWebApp
 
         public bool IsButtonPressed { get { return _controller.Read(ButtonPin) == PinValue.High; } }
 
-        public IoController()
+        public IoController(ISignalRHub signalRHub)
         {
+            _signalRHub = signalRHub;
+
             _controller = new GpioController();
             _controller.OpenPin(Relay1Pin, PinMode.Output);
             _controller.OpenPin(Relay2Pin, PinMode.Output);
@@ -96,7 +99,7 @@ namespace PiWebApp
                     WaitForEventResult result = _controller.WaitForEvent(pinNumber, PinEventTypes.Rising | PinEventTypes.Falling, _cancellationTokenSource.Token);
 
                     // Wait a short while and read stable button state
-                    cancellationToken.WaitHandle.WaitOne(300);
+                    cancellationToken.WaitHandle.WaitOne(200);
 
                     try
                     {
@@ -112,6 +115,8 @@ namespace PiWebApp
                             {
                                 ButtonReleased?.Invoke(this, EventArgs.Empty);
                             }
+
+                            _signalRHub.SendButtonStateAsync(newButtonState);
 
                             lastButtonState = newButtonState;
                         }
