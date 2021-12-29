@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using PiWebApp.Models;
+﻿using PiWebApp.Models;
 using System.Device.Gpio;
 
 namespace PiWebApp
@@ -19,7 +18,6 @@ namespace PiWebApp
         #endregion
 
         private readonly GpioController _controller;
-        private readonly IHubContext<SignalRHub> _hubContext;
         private readonly CancellationTokenSource _cancellationTokenSource;
 
         public event EventHandler<EventArgs>? ButtonPressed;
@@ -27,10 +25,8 @@ namespace PiWebApp
 
         public bool IsButtonPressed { get { return _controller.Read(ButtonPin) == PinValue.High; } }
 
-        public IoController(IHubContext<SignalRHub> hubContext)
+        public IoController()
         {
-            _hubContext = hubContext;
-
             _controller = new GpioController();
             _controller.OpenPin(Relay1Pin, PinMode.Output);
             _controller.OpenPin(Relay2Pin, PinMode.Output);
@@ -118,8 +114,6 @@ namespace PiWebApp
                             {
                                 ButtonReleased?.Invoke(this, EventArgs.Empty);
                             }
-
-                            _hubContext.Clients.All.SendAsync("ButtonStateChanged", newButtonState).Wait();
                         }
                     }
                     catch (Exception)

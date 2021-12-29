@@ -2,6 +2,6 @@
 {
     public interface ISignalRHub
     {
-        Task SendButtonStateAsync(bool pressed);
+        Task SendButtonState(bool pressed);
     }
 }

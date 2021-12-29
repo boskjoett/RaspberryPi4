@@ -2,7 +2,7 @@
 
 namespace PiWebApp
 {
-    public class SignalRHub : Hub
+    public class SignalRHub : Hub<ISignalRHub>
     {
         private readonly ILogger<SignalRHub> _logger;
 
@@ -16,7 +16,7 @@ namespace PiWebApp
             try
             {
                 _logger.LogInformation($"Sending button state {pressed} over SignalR");
-                await Clients.All.SendAsync("ButtonStateChanged", pressed);
+                await Clients.All.SendButtonState(pressed);
             }
             catch (Exception ex)
             {

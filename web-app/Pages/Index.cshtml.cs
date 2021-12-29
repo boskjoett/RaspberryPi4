@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using PiWebApp.Models;
 
 namespace PiWebApp.Pages
@@ -6,13 +7,15 @@ namespace PiWebApp.Pages
     public class IndexModel : PageModel
     {
         private readonly IIoController _ioController;
+        private readonly IHubContext<SignalRHub, ISignalRHub> _hubContext;
         private readonly ILogger<IndexModel> _logger;
 
         public bool ButtonPressed { get; private set; }
 
-        public IndexModel(IIoController ioController, ILogger<IndexModel> logger)
+        public IndexModel(IIoController ioController, IHubContext<SignalRHub, ISignalRHub> hubContext, ILogger<IndexModel> logger)
         {
             _ioController = ioController;
+            _hubContext = hubContext;
             _logger = logger;
 
             _ioController.ButtonPressed += OnButtonPressed;
@@ -40,12 +43,14 @@ namespace PiWebApp.Pages
 
         private void OnButtonPressed(object? sender, EventArgs e)
         {
-            _logger.LogInformation("Button is pressed");
+            _logger.LogInformation("Button is pressed. Sending SignalR message.");
+            _hubContext.Clients.All.SendButtonState(true);
         }
 
         private void OnButtonReleased(object? sender, EventArgs e)
         {
-            _logger.LogInformation("Button is released");
+            _logger.LogInformation("Button is released. Sending SignalR message.");
+            _hubContext.Clients.All.SendButtonState(false);
         }
     }
 }

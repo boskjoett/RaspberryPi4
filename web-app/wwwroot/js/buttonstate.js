@@ -2,9 +2,9 @@
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/notifications").build();
 
-connection.on("ButtonStateChanged", function (pressed) {
+connection.on("SendButtonState", function (pressed) {
 
-    console.log("ButtonStateChanged message received");
+    console.log("SendButtonState called - pressed: " + pressed);
 
     var divElement = document.getElementById("buttonState");
     divElement.innerHTML = "<p>Button state changed</p>";
