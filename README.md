@@ -6,10 +6,11 @@ This repo contains Raspberry Pi 4 Model B projects written in C# using .NET 6.0.
 
 | Folder | Content |
 |--------|---------|
-| led-flasher       | Simple program that flashes an LED. |
-| button-poller     | Simple program that turns on an LED and a buzzer while a button is pressed. |
-| bluetooth-scanner | Simple program that scans for Bluetooth devices. Uses the BlueZ Bluetooth stack. |
-| google-assistant  | Google Assistant demo |
+| led-flasher       | Simple console program that flashes an LED. |
+| button-poller     | Simple console program that turns on an LED and a buzzer while a button is pressed. |
+| bluetooth-scanner | Simple console program that scans for Bluetooth devices. Uses the BlueZ Bluetooth stack. |
+| relay-board       | Simple console program that controls the relays on a relay HAT board. |
+| web-app           | ASP.NET web application that controls GPIO pins. Input pin states are pushed to browser using SignalR. |
 
 These projects can run both on Raspian and Ubuntu for Raspberry Pi.
 
@@ -125,3 +126,12 @@ RPI Relay Board
 ### Documentation and Sample Code
 
 https://www.waveshare.com/wiki/RPi_Relay_Board
+
+
+--------------
+
+## Temperature and Humidity Sensor
+
+DHT11 Digital temperature and humidity sensor with single-wire interface.
+
+https://whadda.com/product/dht11-digital-temperature-humidity-sensor-module-wpse311/

@@ -3,6 +3,12 @@
 ASP.NET 6.0 web app for controlling I/O pins on a [Raspberry Pi 4 model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
 with a [RPi Relay Board](https://www.waveshare.com/wiki/RPi_Relay_Board) mounted.
 
+It can also turn an LED on/off and detect the state of a pushbutton.
+
+The state of the button is pushed to the browser on changes using SignalR.
+
+The web app uses Razor pages and [Bootstrap](https://getbootstrap.com/) for web components and responsive layout.
+
 ### I/O pin usage
 
 | GPIO | Mode           | Use     |
