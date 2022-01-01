@@ -40,24 +40,24 @@ namespace LedFlasher
 
                 int loopCounter = 0;
 
-                while (controller.Read(pin) == PinValue.High && loopCounter < 10000)
+                while (controller.Read(pin) == PinValue.High && loopCounter < 100000)
                 {
                     loopCounter++;
                 }
 
-                if (loopCounter >= 10000)
+                if (loopCounter >= 100000)
                 {
                     Console.WriteLine("Response high to low transition not detected");
                     return;
                 }
 
                 loopCounter = 0;
-                while (controller.Read(pin) == PinValue.Low && loopCounter < 10000)
+                while (controller.Read(pin) == PinValue.Low && loopCounter < 100000)
                 {
                     loopCounter++;
                 }
 
-                if (loopCounter >= 10000)
+                if (loopCounter >= 100000)
                 {
                     Console.WriteLine("Response low to high transition not detected");
                     return;
@@ -76,12 +76,12 @@ namespace LedFlasher
                     // Each data bit starts with a high to low transition that stays low for 54 microseconds
                     loopCounter = 0;
 
-                    while (controller.Read(pin) == PinValue.High && loopCounter < 10000)
+                    while (controller.Read(pin) == PinValue.High && loopCounter < 100000)
                     {
                         loopCounter++;
                     }
 
-                    if (loopCounter >= 10000)
+                    if (loopCounter >= 100000)
                     {
                         Console.WriteLine("Data high to low transition not detected");
                         return;
@@ -90,12 +90,12 @@ namespace LedFlasher
                     // Detect low to high transition. The duration of the high state determines the bit value
                     loopCounter = 0;
 
-                    while (controller.Read(pin) == PinValue.Low && loopCounter < 10000)
+                    while (controller.Read(pin) == PinValue.Low && loopCounter < 100000)
                     {
                         loopCounter++;
                     }
 
-                    if (loopCounter >= 10000)
+                    if (loopCounter >= 100000)
                     {
                         Console.WriteLine("Data low to high transition not detected");
                         return;
