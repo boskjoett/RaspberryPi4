@@ -6,15 +6,15 @@ namespace LedFlasher
 {
     //
     // This program assumes that a DHT11 temperature and humidity sensor
-    // has its data pin connected to GPIO pin 2.
+    // has its data pin connected to GPIO pin 18.
     //
     class Program
     {
         static void Main(string[] args)
         {
             int pin = 18;
-            int temperature;
-            int humidity;
+            int temperature = 0;
+            int humidity = 0;
             
             Console.WriteLine("Reading temperature and humidity");
 
@@ -33,7 +33,7 @@ namespace LedFlasher
                 controller.Write(pin, PinValue.High);
 
                 // Set pin in input mode
-                controller.OpenPin(pin, PinMode.Input);
+                controller.SetPinMode(pin, PinMode.Input);
 
                 // After a start pulse the sensor sends a response pulse where input goes from high to low.
                 // Detect the transition from high to low.
@@ -101,6 +101,8 @@ namespace LedFlasher
                         return;
                     }
                 }
+
+                Console.WriteLine($"Temperature: {temperature}.  Humidity: {humidity}%");
             }
         }
     }
