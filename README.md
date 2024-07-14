@@ -1,5 +1,5 @@
-# Raspberry Pi 4 Model B Stuff
-This repo contains Raspberry Pi 4 Model B projects written in C# using .NET 6.0.
+# Raspberry Pi 4 Model
+This repo contains Raspberry Pi 4 Model B projects written in C# using .NET.
 
 ![Photo](images/RaspberryPi4.jpg)
 
@@ -15,6 +15,12 @@ This repo contains Raspberry Pi 4 Model B projects written in C# using .NET 6.0.
 These projects can run both on Raspian and Ubuntu for Raspberry Pi.
 
 ![Photo](images/photo.jpg)
+
+## Login
+
+The Raspberry PI appears on the network with hostname **raspberry**.
+
+Turn on the Raspberry PI and it will connect to WiFi. You ping the hostname **raspberry**.
 
 ## GPIO Ports
 
